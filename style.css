@@ -2,8 +2,11 @@ body {
     color: #fff;
     font-family: 'Arial';
     text-align: center;
+
+
 }
 
+    
 #gridwrap {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -19,6 +22,29 @@ body {
     "section section section section"
     "section section section section"
     "footer footer footer footer";
+}
+
+
+@media screen and (max-width: 760px){
+
+    #gridwrap {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: minmax(100px, auto);
+        grid-gap: 10px;
+        max-width: 960px;
+        margin: 0 auto;
+        position: relative;
+        grid-template-areas: 
+        "header header "
+        "footer footer"
+        "aside ."
+        "nav main"
+        "section section"
+        "section section"
+        ;
+    }
+
 }
 
 #gridwrap > * {
