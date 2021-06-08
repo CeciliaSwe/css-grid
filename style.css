@@ -9,19 +9,21 @@ body {
     
 #gridwrap {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     grid-auto-rows: minmax(100px, auto);
     grid-gap: 10px;
     max-width: 960px;
     margin: 0 auto;
     position: relative;
     grid-template-areas: 
-    "header header header header"
-    "aside . main main"
-    "nav nav main main"
-    "section section section section"
-    "section section section section"
-    "footer footer footer footer";
+    "header header header header header header"
+    "wheel wheel wheel . question question"
+    "wheel wheel wheel . question question"
+    "wheel wheel wheel . question question"
+    "wheel wheel wheel . option option"
+    "wheel wheel wheel . option option"
+    "result result result result result result"
+    "footer footer footer footer footer footer";
 }
 
 
@@ -58,7 +60,7 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     grid-auto-rows: minmax(100%, auto);
     width: 100%;
     height: 100%;
@@ -84,16 +86,21 @@ header {
 }
 
 main {
-    grid-area: main;
+    grid-area: wheel;
     
 }
 
-aside {
-    grid-area: aside;
+
+#question  {
+    grid-area: question;
 }
 
-section {
-    grid-area: section;
+#option {
+    grid-area: option;
+}
+
+#result {
+    grid-area: result;
 }
 
 nav {
