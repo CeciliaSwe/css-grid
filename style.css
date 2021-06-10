@@ -37,11 +37,12 @@ body {
         position: relative;
         grid-template-areas: 
         "header header "
+        "wheel wheel"
+        "category category"
+        "question question"
+        "option option"
+        "result result"
         "footer footer"
-        "aside ."
-        "nav main"
-        "section section"
-        "section section"
         ;
     }
 
@@ -83,7 +84,7 @@ header {
     grid-area: header;
 }
 
-main {
+button {
     grid-area: wheel;  
 }
 
