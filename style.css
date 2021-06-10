@@ -9,21 +9,19 @@ body {
     
 #gridwrap {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(12, 1fr);
     grid-auto-rows: minmax(100px, auto);
     grid-gap: 10px;
-    max-width: 960px;
+    max-width: 1680px;
     margin: 0 auto;
     position: relative;
     grid-template-areas: 
-    "header header header header header header"
-    "wheel wheel wheel . question question"
-    "wheel wheel wheel . question question"
-    "wheel wheel wheel . question question"
-    "wheel wheel wheel . option option"
-    "wheel wheel wheel . option option"
-    "result result result result result result"
-    "footer footer footer footer footer footer";
+    "header header header header header header header header header header header header"
+    "wheel wheel wheel wheel category category category category question question question question"
+    "wheel wheel wheel wheel category category category category question question question question"
+    "wheel wheel wheel wheel category category category category option option option option"
+    ". . result result result result result result result result . ."
+    ". . footer footer footer footer footer footer footer footer . .";
 }
 
 
@@ -60,7 +58,7 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(12, 1fr);
     grid-auto-rows: minmax(100%, auto);
     width: 100%;
     height: 100%;
@@ -90,16 +88,20 @@ main {
     
 }
 
+#c-out {
+    grid-area: category;
+}
 
-#question  {
+
+#q-out {
     grid-area: question;
 }
 
-#option {
+#o-out {
     grid-area: option;
 }
 
-#result {
+#r-out {
     grid-area: result;
 }
 
