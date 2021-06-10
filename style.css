@@ -84,14 +84,17 @@ header {
 }
 
 main {
-    grid-area: wheel;
-    
+    grid-area: wheel;  
 }
 
 #c-out {
     grid-area: category;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    
 }
-
 
 #q-out {
     grid-area: question;
@@ -111,4 +114,13 @@ nav {
 
 footer {
     grid-area: footer;
+}
+
+#question-symbol {
+    font-size: 15rem;
+}
+
+.category {
+    border: 1px solid red;
+
 }
