@@ -10,19 +10,28 @@ function clickQuestion (event) {
     console.log('"this" currently refers to', this.id);
     console.log('You clicked the button!\n');
 
-    if (randomCategory === 0) {
-        alert("Picked 1");
-            lightCat1();
-    } else if (randomCategory === 1) {
-            alert("Picked 2");
-            lightCat2();
-    } else alert(` It randomised ${randomCategory}! It is not defined yet!`) 
+    lightCat1(randomCategory);
+
+     
 }
   
   let questionButton = document.getElementById('question');
   questionButton.addEventListener('click', clickQuestion); // left clicks
 
-function lightCat1() {
-    document.getElementById("c-1").style.backgroundColor = "orange";
+function lightCat1(randomCategory) {
+    if (randomCategory === 0) {
+        alert("Picked 1");
+        document.getElementById("c-1").style.backgroundColor = "orange";
+    } else if (randomCategory === 1) {
+        alert("Picked 2");
+        document.getElementById("c-2").style.backgroundColor = "orange";
+    } else if (randomCategory === 2) {
+        alert("Picked 3");
+        document.getElementById("c-3").style.backgroundColor = "orange";
+    } else if (randomCategory === 3) {
+        alert("Picked 4");
+        document.getElementById("c-4").style.backgroundColor = "orange";
+    };
+    
 }
   
