@@ -9,9 +9,20 @@ function clickQuestion (event) {
     console.log('Received the ' + event.type + " event!");
     console.log('"this" currently refers to', this.id);
     console.log('You clicked the button!\n');
-  }
+
+    if (randomCategory === 0) {
+        alert("Picked 1");
+            lightCat1();
+    } else if (randomCategory === 1) {
+            alert("Picked 2");
+            lightCat2();
+    } else alert(` It randomised ${randomCategory}! It is not defined yet!`) 
+}
   
   let questionButton = document.getElementById('question');
   questionButton.addEventListener('click', clickQuestion); // left clicks
-  
+
+function lightCat1() {
+    document.getElementById("c-1").style.backgroundColor = "orange";
+}
   

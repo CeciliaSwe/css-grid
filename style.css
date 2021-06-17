@@ -17,11 +17,11 @@ body {
     position: relative;
     grid-template-areas: 
     "header header header header header header header header header header header header"
-    "wheel wheel wheel wheel category category category category question question question question"
-    "wheel wheel wheel wheel category category category category question question question question"
-    "wheel wheel wheel wheel category category category category option option option option"
-    ". . result result result result result result result result . ."
-    ". . footer footer footer footer footer footer footer footer . .";
+    ". wheel wheel wheel . value value . question question question ."
+    ". wheel wheel wheel . category category . question question question ."
+    ". wheel wheel wheel . category category . option option option ."
+    ". . . result result result result result result . . ."
+    ". . . . .  footer footer . . . . .";
 }
 
 
@@ -107,6 +107,10 @@ button {
 
 #r-out {
     grid-area: result;
+}
+
+#value {
+    grid-area: value;
 }
 
 nav {
