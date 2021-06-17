@@ -10,6 +10,7 @@ function clickQuestion (event) {
     console.log('"this" currently refers to', this.id);
     console.log('You clicked the button!\n');
 
+    questionValue();
     lightCat1(randomCategory);
 
      
@@ -17,6 +18,14 @@ function clickQuestion (event) {
   
   let questionButton = document.getElementById('question');
   questionButton.addEventListener('click', clickQuestion); // left clicks
+
+function questionValue() {
+    let values = [10, 20, 50, 100];
+    let randomValue = Math.floor(Math.random() * values.length);
+    console.log(values[randomValue]);
+    alert(`The value of the question is ${values[randomValue]}.`);
+    document.getElementById("value").innerHTML = values[randomValue];
+}
 
 function lightCat1(randomCategory) {
     if (randomCategory === 0) {
