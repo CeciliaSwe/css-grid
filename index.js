@@ -11,9 +11,7 @@ function clickQuestion (event) {
     console.log('You clicked the button!\n');
 
     questionValue();
-    lightCat1(randomCategory);
-
-     
+    lightCat1(randomCategory);   
 }
   
   let questionButton = document.getElementById('question');
@@ -27,7 +25,7 @@ function questionValue() {
     document.getElementById("value").innerHTML = values[randomValue];
 }
 
-function lightCat1(randomCategory) {
+function lightCategory(randomCategory) {
     if (randomCategory === 0) {
         alert("Picked 1");
         document.getElementById("c-1").style.backgroundColor = "orange";
