@@ -1,10 +1,10 @@
-var questionCounter = 0;
+/*var questionCounter = 0;
 
 const quizContainer = document.getElementById("q-out");
     const resultsContainer = document.getElementById("r-out");
     const submitButton = document.getElementById('submit');
-    const optionContainer = document.getElementById("o-out")
-    
+    const optionContainer = document.getElementById("o-out")*/
+
 var quiz = [{
   "question": "What is the full form of IP?",
   "choices": ["Internet Provider", "Internet Port", "Internet Protocol"],
@@ -46,7 +46,10 @@ var quiz = [{
   "choices": ["qwe", "asd", "zxc"],
   "correct": "qwe"
 }];
-var currentQuestion = Math.floor(Math.random() * quiz.length);
+
+/*var currentQuestion = Math.floor(Math.random() * quiz.length);
+
+
 // define elements
 var content = $("content"),
   questionContainer = $("question"),
@@ -132,4 +135,4 @@ function showFinalResults() {
     Math.round(score / quiz.length * 100) + "%<h2>";
 }
 window.addEventListener("load", askQuestion, false);
-submitBtn.addEventListener("click", checkAnswer, false);
+submitBtn.addEventListener("click", checkAnswer, false);*/

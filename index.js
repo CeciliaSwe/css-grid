@@ -29,6 +29,7 @@ function lightCategory(randomCategory) {
     if (randomCategory === 0) {
         alert("Picked 1");
         document.getElementById("c-1").style.backgroundColor = "orange";
+        displayCat1();
     } else if (randomCategory === 1) {
         alert("Picked 2");
         document.getElementById("c-2").style.backgroundColor = "orange";
@@ -41,4 +42,69 @@ function lightCategory(randomCategory) {
     };
     
 }
+
+//all OK until here!
+
+
+
+// shuffles the quiz and avoids repeat according to ...
+function shuffle(quiz) {
+    var m = quiz.length, t, i;
+  // While there remain elements to shuffle…
+    while (m) {
+  // Pick a remaining element…
+      i = Math.floor(Math.random() * m--);
+  // And swap it with the current element.
+      t = quiz[m];
+      quiz[m] = quiz[i];
+      quiz[i] = t;
+    }
+  return quiz;
+  }
   
+
+var questionCounter = 0;
+
+const quizContainer = document.getElementById("q-out");
+const resultsContainer = document.getElementById("r-out");
+const submitButton = document.getElementById('submit');
+const optionContainer = document.getElementById("o-out")
+
+
+// define elements
+var content = $("content"),
+  questionContainer = $("question"),
+  choicesContainer = $("choices"),
+  scoreContainer = $("score"),
+  submitBtn = $("submit");
+score = 0,
+  askingQuestion = true;
+function $(id) { // shortcut for document.getElementById
+  return document.getElementById(id);
+}
+function askQuestion() {
+//increment the counter
+    questionCounter++;
+var choices = quiz[currentQuestion].choices,
+    choicesHtml = "";
+// loop through choices, and create radio buttons
+  for (var i = 0; i < choices.length; i++) {
+    choicesHtml += "<input type='radio' name='quiz" + currentQuestion +
+      "' id='choice" + (i + 1) +
+      "' value='" + choices[i] + "'>" +
+      " <label for='choice" + (i + 1) + "'>" + choices[i] + "</label><br>";
+  }
+// load the question
+  quizContainer.innerHTML = "Q" + (questionCounter) + ". " +
+    quiz[currentQuestion].question;
+// load the choices
+  optionContainer.innerHTML = choicesHtml;
+// setup for the first time
+  if (questionCounter === 1) {
+    scoreContainer.textContent = "Score: 0 right answers out of " +
+      quiz.length + " possible.";
+    submitBtn.textContent = "Submit Answer";
+}
+}
+
+
