@@ -34,7 +34,7 @@
         }
       );
   
-      // displau Q and A in separate containers
+      // display Q and A in separate containers
       quizContainer.innerHTML = outputQ;
       optionContainer.innerHTML = outputA;
     }
@@ -80,11 +80,11 @@
     const optionContainer = document.getElementById("o-out")
     const myQuestions = [
       {
-        question: "Who invented JavaScript?",
+        question: "What is the name of the yellow starter Pokemón?",
         answers: {
-          a: "Douglas Crockford",
-          b: "Sheryl Sandberg",
-          c: "Brendan Eich"
+          a: "Charmander",
+          b: "Bulbasaur",
+          c: "Pikachu"
         },
         correctAnswer: "c"
       },
