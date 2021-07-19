@@ -11,7 +11,7 @@ function clickQuestion (event) {
     console.log('You clicked the button!\n');
 
     questionValue();
-    lightCat1(randomCategory);   
+    lightCategory(randomCategory);   
 }
   
   let questionButton = document.getElementById('question');
