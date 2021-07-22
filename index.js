@@ -43,7 +43,6 @@ function lightCategory(randomCategory) {
     
 }
 
-//all OK until here!
 
 //Shuffles array according to Fisher-Yates https://bost.ocks.org/mike/shuffle/
 
@@ -65,40 +64,151 @@ function shuffle(quiz) {
   return quiz;
 }
 
-// Used like so
+// Questions
 
-var arr = [{
-  "question": "What is the full form of IP?",
-  "choices": ["Internet Provider", "Internet Port", "Internet Protocol"],
-  "correct": "Internet Protocol"
-}, {
-  "question": "Who is the founder of Microsoft?",
-  "choices": ["Bill Gates", "Steve Jobs", "Steve Wozniak"],
-  "correct": "Bill Gates"
-}, {
-  "question": "1 byte = ?",
-  "choices": ["8 bits", "64 bits", "1024 bits"],
-  "correct": "8 bits"
-}, {
-  "question": "The C programming language was developed by?",
-  "choices": ["Brendan Eich", "Dennis Ritchie", "Guido van Rossum"],
-  "correct": "Dennis Ritchie"
-}, {
-  "question": "What does CC mean in emails?",
-  "choices": ["Carbon Copy", "Creative Commons", "other"],
-  "correct": "Carbon Copy"
-}];
+var quiz = [
+  {
+    question: "What is the name of the yellow starter Pokemón?",
+    answers: {
+      a: "Charmander",
+      b: "Bulbasaur",
+      c: "Pikachu"
+    },
+    correctAnswer: "c"
+  },
+  {
+    question: "Which one of these is a JavaScript package manager?",
+    answers: {
+      a: "Node.js",
+      b: "TypeScript",
+      c: "npm"
+    },
+    correctAnswer: "c"
+  },
+  {
+    question: "Which tool can you use to ensure code quality?",
+    answers: {
+      a: "Angular",
+      b: "jQuery",
+      c: "RequireJS",
+      d: "ESLint"
+    },
+    correctAnswer: "d"
+  }
+];
 
-shuffle(arr);
-console.log(arr[0]);
+//Perform shuffle and log first q
+shuffle(quiz);
+console.log(quiz[0]);
+
+//all OK until here!
+
+
+function buildQuiz(){
+  // variable to store the HTML output
+  const outputQ = [];
+  const outputA = [];
+
+  // for each question...
+  quiz.forEach(
+    (currentQuestion, questionNumber) => {
+
+      // variable to store the list of possible answers
+      const answers = [];
+
+      // and for each available answer...
+      for(letter in currentQuestion.answers){
+
+        // ...add an HTML radio button
+        answers.push(
+          `<label>
+            <input type="radio" name="question${questionNumber}" value="${letter}">
+            ${letter} :
+            ${currentQuestion.answers[letter]}
+          </label>`
+        );
+      }
+
+      // add this question and its answers to the output
+      outputQ.push(
+        `<div class="question"> ${currentQuestion.question} </div>`
+      );
+      outputA.push(
+        `<div class="answers"> ${answers.join('')} </div>`
+      );
+    }
+  );
+
+  // displau Q and A in separate containers
+  quizContainer.innerHTML = outputQ;
+  optionContainer.innerHTML = outputA;
+}
+
+const quizContainer = document.getElementById("q-out");
+const resultsContainer = document.getElementById("r-out");
+const submitButton = document.getElementById('submit');
+const optionContainer = document.getElementById("o-out");
+
+// Kick things off
+buildQuiz();
 
 /*
-var questionCounter = 0;
+function showResults(){
+
+  // gather answer containers from our quiz
+  const answerContainers = quizContainer.querySelectorAll('.answers');
+
+  // keep track of user's answers
+  let numCorrect = 0;
+
+  // for each question...
+  myQuestions.forEach( (currentQuestion, questionNumber) => {
+
+    // find selected answer
+    const answerContainer = answerContainers[questionNumber];
+    const selector = `input[name=question${questionNumber}]:checked`;
+    const userAnswer = (answerContainer.querySelector(selector) || {}).value;
+
+    // if answer is correct
+    if(userAnswer === currentQuestion.correctAnswer){
+      // add to the number of correct answers
+      numCorrect++;
+
+      // color the answers green
+      answerContainers[questionNumber].style.color = 'lightgreen';
+    }
+    // if answer is wrong or blank
+    else{
+      // color the answers red
+      answerContainers[questionNumber].style.color = 'red';
+    }
+  });
+
+  // show number of correct answers out of total
+  resultsContainer.innerHTML = `${numCorrect} out of ${myQuestions.length}`;
+}
 
 const quizContainer = document.getElementById("q-out");
 const resultsContainer = document.getElementById("r-out");
 const submitButton = document.getElementById('submit');
 const optionContainer = document.getElementById("o-out")
+
+
+
+
+// Event listeners
+submitButton.addEventListener('click', showResults);
+
+
+
+
+/*
+var questionCounter = 0;
+
+let quizContainer = document.getElementById("q-out");
+let resultsContainer = document.getElementById("r-out");
+let submitButton = document.getElementById('submit');
+let optionContainer = document.getElementById("o-out")
 
 
 // define elements
@@ -117,6 +227,7 @@ function askQuestion() {
     questionCounter++;
 var choices = quiz[currentQuestion].choices,
     choicesHtml = "";
+
 // loop through choices, and create radio buttons
   for (var i = 0; i < choices.length; i++) {
     choicesHtml += "<input type='radio' name='quiz" + currentQuestion +
