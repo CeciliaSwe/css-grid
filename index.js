@@ -12,6 +12,7 @@ function clickQuestion (event) {
 
     questionValue();
     lightCategory(randomCategory);   
+    shuffle();
 }
   
   let questionButton = document.getElementById('question');
@@ -29,7 +30,6 @@ function lightCategory(randomCategory) {
     if (randomCategory === 0) {
         alert("Picked 1");
         document.getElementById("c-1").style.backgroundColor = "orange";
-        displayCat1();
     } else if (randomCategory === 1) {
         alert("Picked 2");
         document.getElementById("c-2").style.backgroundColor = "orange";
@@ -45,24 +45,40 @@ function lightCategory(randomCategory) {
 
 //all OK until here!
 
+function shuffle(array) {
+  var currentIndex = array.length,  randomIndex;
 
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
 
-// shuffles the quiz and avoids repeat according to ...
-function shuffle(quiz) {
-    var m = quiz.length, t, i;
-  // While there remain elements to shuffle…
-    while (m) {
-  // Pick a remaining element…
-      i = Math.floor(Math.random() * m--);
-  // And swap it with the current element.
-      t = quiz[m];
-      quiz[m] = quiz[i];
-      quiz[i] = t;
-    }
-  return quiz;
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    // And swap it with the current element.
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex], array[currentIndex]];
   }
-  
 
+  return array;
+}
+
+// Used like so
+
+var arr = [{
+  "question": "What is the full form of IP?",
+  "choices": ["Internet Provider", "Internet Port", "Internet Protocol"],
+  "correct": "Internet Protocol"
+}, {
+  "question": "Who is the founder of Microsoft?",
+  "choices": ["Bill Gates", "Steve Jobs", "Steve Wozniak"],
+  "correct": "Bill Gates"
+}];
+
+shuffle(arr);
+console.log(arr);
+
+/*
 var questionCounter = 0;
 
 const quizContainer = document.getElementById("q-out");
@@ -107,4 +123,4 @@ var choices = quiz[currentQuestion].choices,
 }
 }
 
-
+*/
