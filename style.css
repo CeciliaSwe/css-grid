@@ -127,3 +127,21 @@ footer {
     border: 1px solid red;
 
 }
+
+.option-box {
+    display: flex;
+    background-color: red;
+    border-radius: 4px;
+}
+
+.option-box:hover {
+    cursor: pointer;
+    transform: scale(1.02);
+    transition: transform 100ms;
+}
+
+.option-prefix .option-text {
+    padding: 2rem;
+    color: whitesmoke;
+}
+
