@@ -1,3 +1,10 @@
+const quizContainer = document.getElementById("q-out");
+const resultsContainer = document.getElementById("r-out");
+const submitButton = document.getElementById('submit');
+const optionText1 = document.getElementById("option-1");
+const optionText2 = document.getElementById("option-2");
+const optionText3 = document.getElementById("option-3");
+
 function clickQuestion (event) {
     
     let selectDiv = document.getElementsByClassName('category');
@@ -12,7 +19,12 @@ function clickQuestion (event) {
 
     questionValue();
     lightCategory(randomCategory);   
-    shuffle();
+    shuffle(quiz);
+    console.log(quiz[0]);
+    quizContainer.innerText = quiz[0].question;
+    optionText1.innerText = quiz[0].choice1;
+    optionText2.innerText = quiz[0].choice2;
+    optionText3.innerText = quiz[0].choice3;
 }
   
   let questionButton = document.getElementById('question');
@@ -66,43 +78,58 @@ function shuffle(quiz) {
 
 // Questions
 
-var quiz = [
+let quiz = [
   {
-    question: "What is the name of the yellow starter Pokemón?",
-    answers: {
-      a: "Charmander",
-      b: "Bulbasaur",
-      c: "Pikachu"
-    },
-    correctAnswer: "c"
+      question: "What is 2+2",
+      choice1: "2",
+      choice2: "4",
+      choice3: "8",
+      answer: 2,
   },
   {
-    question: "Which one of these is a JavaScript package manager?",
-    answers: {
-      a: "Node.js",
-      b: "TypeScript",
-      c: "npm"
-    },
-    correctAnswer: "c"
+      question: "What is 3x3",
+      choice1: "9",
+      choice2: "18",
+      choice3: "35",
+      answer: 1,
   },
   {
-    question: "Which tool can you use to ensure code quality?",
-    answers: {
-      a: "Angular",
-      b: "jQuery",
-      c: "RequireJS",
-      d: "ESLint"
-    },
-    correctAnswer: "d"
+      question: "What is 4-4",
+      choice1: "2",
+      choice2: "16",
+      choice3: "0",
+      answer: 3,
   }
 ];
 
 //Perform shuffle and log first q
-shuffle(quiz);
-console.log(quiz[0]);
+
+
 
 //all OK until here!
 
+
+let currentQuestion = {};
+let acceptingAnswers = true;
+let score = 0;
+let questionCounter = 0;
+let availableQuestions =  [];
+
+
+
+function displayQ() {
+    quizContainer.innerText = (quiz[0].question);
+}
+
+function getNewQuestions() {
+    const questionsIndex = availableQuestions[0]++;
+    currentQuestion = availableQuestions[questionsIndex];
+    quizContainer.innerText = currentQuestion.question;
+}
+
+/*
+
+// Kick things off
 
 function buildQuiz(){
   // variable to store the HTML output
@@ -144,15 +171,10 @@ function buildQuiz(){
   optionContainer.innerHTML = outputA;
 }
 
-const quizContainer = document.getElementById("q-out");
-const resultsContainer = document.getElementById("r-out");
-const submitButton = document.getElementById('submit');
-const optionContainer = document.getElementById("o-out");
 
-// Kick things off
+
+
 buildQuiz();
-
-/*
 function showResults(){
 
   // gather answer containers from our quiz

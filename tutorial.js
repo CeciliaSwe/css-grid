@@ -26,4 +26,20 @@ let questions = [
         choice3: "0",
         answer: 3,
     }
-]
+];
+
+function startGame() {
+    availableQuestions = [...questions];
+    getNewQuestions();
+}
+
+function getNewQuestions() {
+    const questionsIndex = availableQuestions[0]++;
+    currentQuestion = availableQuestions[questionsIndex];
+    quizContainer.innerText = currentQuestion.question;
+}
+
+const quizContainer = document.getElementById("q-out");
+const resultsContainer = document.getElementById("r-out");
+const submitButton = document.getElementById('submit');
+const optionContainer = document.getElementById("o-out");
