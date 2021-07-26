@@ -95,11 +95,27 @@ let quiz = [
     category: "Pokemon",
   },
   {
+    question: "Which is not a legendary Pokemon?",
+    choice1: "Heatran",
+    choice2: "Dragonite",
+    choice3: "Lugia",
+    answer: 2,
+    category: "Pokemon",
+  },
+  {
     question: "Which is  a Minecraft character?",
     choice1: "Creeper",
     choice2: "Crawler",
     choice3: "Crowbar",
     answer: 1,
+    category: "Minecraft",
+  },
+  {
+    question: "Who created Minecraft?",
+    choice1: "Anders Jansson",
+    choice2: "Johan Larsson",
+    choice3: "Markus Persson",
+    answer: 3,
     category: "Minecraft",
   },
   {
@@ -119,6 +135,14 @@ let quiz = [
       category: "Maths",
   },
   {
+    question: "What is 24 - 8",
+    choice1: "16",
+    choice2: "13",
+    choice3: "19",
+    answer: 1,
+    category: "Maths",
+  },
+  {
       question: "What is 4-4",
       choice1: "2",
       choice2: "16",
@@ -132,18 +156,6 @@ let quiz = [
 const quizCatA = quiz.filter(quiz => quiz.category === "Pokemon");
 const quizCatB = quiz.filter(quiz => quiz.category === "Minecraft");
 const quizCatC = quiz.filter(quiz => quiz.category === "Maths");
-
-
-//all OK until here!
-
-
-let currentQuestion = {};
-let acceptingAnswers = true;
-let score = 0;
-let questionCounter = 0;
-let availableQuestions =  [];
-
-
 
 function displayFirstQ(randomCategory) {
   if (randomCategory === 0) {
@@ -171,3 +183,16 @@ function displayFirstQ(randomCategory) {
       alert("Not defined yet");
   }
 };  
+
+
+//all OK until here!
+
+
+let currentQuestion = {};
+let acceptingAnswers = true;
+let score = 0;
+let questionCounter = 0;
+let availableQuestions =  [];
+
+
+
