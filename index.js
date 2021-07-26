@@ -20,11 +20,8 @@ function clickQuestion (event) {
     questionValue();
     lightCategory(randomCategory);   
     shuffle(quiz);
-    console.log(quiz[0]);
-    quizContainer.innerText = quiz[0].question;
-    optionText1.innerText = quiz[0].choice1;
-    optionText2.innerText = quiz[0].choice2;
-    optionText3.innerText = quiz[0].choice3;
+    displayFirstQ();
+    
 }
   
   let questionButton = document.getElementById('question');
@@ -80,11 +77,36 @@ function shuffle(quiz) {
 
 let quiz = [
   {
-      question: "What is 2+2",
-      choice1: "2",
-      choice2: "4",
-      choice3: "8",
+      question: "How many starter Pokemons can you choose from?",
+      choice1: "1",
+      choice2: "3",
+      choice3: "5",
       answer: 2,
+      category: "Pokemon",
+  },
+  {
+    question: "What color is Charmander?",
+    choice1: "Green",
+    choice2: "Blue",
+    choice3: "Orange",
+    answer: 3,
+    category: "Pokemon",
+  },
+  {
+    question: "Which is  a Minecraft character?",
+    choice1: "Creeper",
+    choice2: "Crawler",
+    choice3: "Crowbar",
+    answer: 1,
+    category: "Minecraft",
+  },
+  {
+    question: "What shape are building blocks?",
+    choice1: "square",
+    choice2: "circular",
+    choice3: "hexagon",
+    answer: 1,
+    category: "Minecraft",
   },
   {
       question: "What is 3x3",
@@ -92,6 +114,7 @@ let quiz = [
       choice2: "18",
       choice3: "35",
       answer: 1,
+      category: "Maths",
   },
   {
       question: "What is 4-4",
@@ -99,11 +122,14 @@ let quiz = [
       choice2: "16",
       choice3: "0",
       answer: 3,
+      category: "Maths",
   }
 ];
 
-//Perform shuffle and log first q
-
+//Get questions from a specific category
+const quizCatA = quiz.filter(quiz => quiz.category === "Pokemon");
+const quizCatB = quiz.filter(quiz => quiz.category === "Maths");
+const quizCatC = quiz.filter(quiz => quiz.category === "Minecraft");
 
 
 //all OK until here!
@@ -117,8 +143,13 @@ let availableQuestions =  [];
 
 
 
-function displayQ() {
-    quizContainer.innerText = (quiz[0].question);
+function displayFirstQ() {
+    
+    console.log(quiz[0]);
+    quizContainer.innerText = quiz[0].question;
+    optionText1.innerText = quiz[0].choice1;
+    optionText2.innerText = quiz[0].choice2;
+    optionText3.innerText = quiz[0].choice3;
 }
 
 function getNewQuestions() {

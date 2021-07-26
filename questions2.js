@@ -1,3 +1,33 @@
+function displayQuestionByCategory() {
+  if (randomCategory === 0) {
+      alert("Picked Pokemon");
+
+      const quizCatA = quiz.filter(quiz => quiz.category === "Pokemon");
+      const quizCatB = quiz.filter(quiz => quiz.category === "Maths");
+      const quizCatC = quiz.filter(quiz => quiz.category === "Minecraft");
+      console.log(quizCatA);
+
+      console.log(quiz[0]);
+      quizContainer.innerText = quiz[0].question;
+      optionText1.innerText = quiz[0].choice1;
+      optionText2.innerText = quiz[0].choice2;
+      optionText3.innerText = quiz[0].choice3;
+  } else if (randomCategory === 1) {
+      alert("Picked 2");
+      document.getElementById("c-2").style.backgroundColor = "orange";
+  } else if (randomCategory === 2) {
+      alert("Picked 3");
+      document.getElementById("c-3").style.backgroundColor = "orange";
+  } else if (randomCategory === 3) {
+      alert("Picked 4");
+      document.getElementById("c-4").style.backgroundColor = "orange";
+  };
+  
+}
+
+
+
+
 /*var questionCounter = 0;
 
 const quizContainer = document.getElementById("q-out");
