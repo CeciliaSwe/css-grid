@@ -8,13 +8,13 @@ function clickQuestion (event) {
     
     let selectDiv = document.getElementsByClassName('category');
     let classLength = selectDiv.length;
-    alert("There are "+classLength+" category classes in the html code");
+    /*alert("There are "+classLength+" category classes in the html code");*/
     let randomCategory = Math.floor(Math.random() * selectDiv.length);
     console.log(randomCategory, selectDiv[randomCategory]);
     console.log(randomCategory);
-    console.log('Received the ' + event.type + " event!");
+    /*console.log('Received the ' + event.type + " event!");
     console.log('"this" currently refers to', this.id);
-    console.log('You clicked the button!\n');
+    console.log('You clicked the button!\n');*/
 
     questionValue();
     lightCategory(randomCategory);   
@@ -32,22 +32,22 @@ function questionValue() {
     let values = [10, 20, 50, 100];
     let randomValue = Math.floor(Math.random() * values.length);
     console.log(values[randomValue]);
-    alert(`The value of the question is ${values[randomValue]}.`);
+    /*alert(`The value of the question is ${values[randomValue]}.`);*/
     document.getElementById("value").innerHTML = values[randomValue];
 }
 
 function lightCategory(randomCategory) {
     if (randomCategory === 0) {
-        alert("Picked 1");
+        /*alert("Picked 1")*/
         document.getElementById("c-1").style.backgroundColor = "orange";
     } else if (randomCategory === 1) {
-        alert("Picked 2");
+        /*alert("Picked 2");*/
         document.getElementById("c-2").style.backgroundColor = "orange";
     } else if (randomCategory === 2) {
-        alert("Picked 3");
+        /*alert("Picked 3");*/
         document.getElementById("c-3").style.backgroundColor = "orange";
     } else if (randomCategory === 3) {
-        alert("Picked 4");
+        /*alert("Picked 4");*/
         document.getElementById("c-4").style.backgroundColor = "orange";
     };
     
@@ -102,7 +102,7 @@ let quiz = [
     category: "Pokemon",
   },
   {
-    question: "Which is  a Minecraft character?",
+    question: "Which is a Minecraft character?",
     choice1: "Creeper",
     choice2: "Crawler",
     choice3: "Crowbar",
@@ -158,28 +158,31 @@ const quizCatC = quiz.filter(quiz => quiz.category === "Maths");
 
 function displayFirstQ(randomCategory) {
   if (randomCategory === 0) {
-      alert("Picked Pokemon");
+      /*alert("Picked Pokemon");*/
       console.log(quizCatA[0]);
       quizContainer.innerText = quizCatA[0].question;
       optionText1.innerText = quizCatA[0].choice1;
       optionText2.innerText = quizCatA[0].choice2;
       optionText3.innerText = quizCatA[0].choice3;
+      correctAnswer = (quizCatA[0].answer);
   } else if (randomCategory === 1) {
-      alert("Picked Minecraft");
+      /*alert("Picked Minecraft");*/
       console.log(quizCatB[0]);
       quizContainer.innerText = quizCatB[0].question;
       optionText1.innerText = quizCatB[0].choice1;
       optionText2.innerText = quizCatB[0].choice2;
       optionText3.innerText = quizCatB[0].choice3;
+      correctAnswer = (quizCatB[0].answer);
   } else if (randomCategory === 2) {
-      alert("Picked Maths");
+      /*alert("Picked Maths");*/
       console.log(quizCatC[0]);
       quizContainer.innerText = quizCatC[0].question;
       optionText1.innerText = quizCatC[0].choice1;
       optionText2.innerText = quizCatC[0].choice2;
       optionText3.innerText = quizCatC[0].choice3;
+      correctAnswer = (quizCatC[0].answer);
   } else {
-      alert("Not defined yet");
+      /*alert("Not defined yet");*/
   }
 };  
 
@@ -187,11 +190,33 @@ function displayFirstQ(randomCategory) {
 //all OK until here!
 
 
-let currentQuestion = {};
+//get the value of the checked radiobutton to compare to correct answer
+
+let myForm = document.getElementsByName("test");
+myForm.elements.namedItem("test").value;
+function checkRadioValue(){
+  (form.elements["test"].value);
+}
+
+
+
+/*function checkAnswer(event) {
+  if (document.getElementById("radios").val() === correctAnswer){
+    alert("WOOP you did it");
+    userScore.correct++;
+    } else{
+      alert("NAH")
+      userScore.incorrect++;
+    }
+    console.log(userScore);
+ }
+
+ let submitAnswer = document.getElementById("submit-answer");
+ submitAnswer.addEventListener('click', checkAnswer); // left clicks*/
+
+let currentAnswer = "";
+let correctAnswer = "";
 let acceptingAnswers = true;
 let score = 0;
 let questionCounter = 0;
 let availableQuestions =  [];
-
-
-

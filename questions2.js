@@ -1,31 +1,27 @@
-function displayFirstQ() {
-  if (randomCategory === 0) {
-      alert("Picked Pokemon");
-      console.log(quizCatA[0]);
-      quizContainer.innerText = quizCatA[0].question;
-      optionText1.innerText = quizCatA[0].choice1;
-      optionText2.innerText = quizCatA[0].choice2;
-      optionText3.innerText = quizCatA[0].choice3;
-  } else if (randomCategory === 1) {
-      alert("Picked Minecraft");
-      console.log(quizCatB[0]);
-      quizContainer.innerText = quizCatB[0].question;
-      optionText1.innerText = quizCatB[0].choice1;
-      optionText2.innerText = quizCatB[0].choice2;
-      optionText3.innerText = quizCatB[0].choice3;
-  } else if (randomCategory === 2) {
-      alert("Picked Maths");
-      console.log(quizCatC[0]);
-      quizContainer.innerText = quizCatC[0].question;
-      optionText1.innerText = quizCatC[0].choice1;
-      optionText2.innerText = quizCatC[0].choice2;
-      optionText3.innerText = quizCatC[0].choice3;
-  } else if (randomCategory === 3) {
-      alert("Picked undefined category");
-  };
-  
-}
+let answerA = document.getElementById("btn-optionA");
+let answerB = document.getElementById("btn-optionB");
+let answerC = document.getElementById("btn-optionC");
+let pickedOption = document.getElementsByClassName("option-prefix");
 
+
+
+answerA.addEventListener('click', checkAnswer);
+answerB.addEventListener('click', checkAnswer);
+answerC.addEventListener('click', checkAnswer);
+
+function checkAnswer(event) {
+  alert("Let's check your answer!");
+  console.log('"this" currently refers to', this.id);
+  console.log('"this" currently refers to', this);
+
+  if (pickedOption === quizCatA[0].answer) {
+    alert("WOOP you did it");
+  } else {
+    alert("NAH that's not it");
+  }
+};
+
+`You picked ${questionNumber}${letter}. Let's check if it is correct!`
 
 
 
@@ -311,4 +307,12 @@ var choices = quiz[currentQuestion].choices,
 }
 }
 
+*/
+
+  /*
+function getNewQuestions() {
+    const questionsIndex = availableQuestions[0]++;
+    currentQuestion = availableQuestions[questionsIndex];
+    quizContainer.innerText = currentQuestion.question;
+}
 */
