@@ -19,7 +19,9 @@ function clickQuestion (event) {
 
     questionValue();
     lightCategory(randomCategory);   
-    shuffle(quiz);
+    shuffle(quizCatA);
+    shuffle(quizCatB);
+    shuffle(quizCatC);
     displayFirstQ();
     
 }
