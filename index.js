@@ -1,6 +1,5 @@
 const quizContainer = document.getElementById("q-out");
 const resultsContainer = document.getElementById("r-out");
-const submitButton = document.getElementById('submit');
 const optionText1 = document.getElementById("option-1");
 const optionText2 = document.getElementById("option-2");
 const optionText3 = document.getElementById("option-3");

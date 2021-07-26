@@ -142,9 +142,17 @@ footer {
 }
 
 .option-prefix, .option-text {
-    padding: 1rem;
     color: whitesmoke;
     margin-right: 1rem;
     justify-content: space-around;
 }
 
+button {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: red;
+    border-radius: 6px;
+    height: auto;
+    
+}
