@@ -22,7 +22,7 @@ function clickQuestion (event) {
     shuffle(quizCatA);
     shuffle(quizCatB);
     shuffle(quizCatC);
-    displayFirstQ();
+    displayFirstQ(randomCategory);
     
 }
   
@@ -128,10 +128,10 @@ let quiz = [
   }
 ];
 
-//Get questions from a specific category
+//Filter out questions from a specific category
 const quizCatA = quiz.filter(quiz => quiz.category === "Pokemon");
-const quizCatB = quiz.filter(quiz => quiz.category === "Maths");
-const quizCatC = quiz.filter(quiz => quiz.category === "Minecraft");
+const quizCatB = quiz.filter(quiz => quiz.category === "Minecraft");
+const quizCatC = quiz.filter(quiz => quiz.category === "Maths");
 
 
 //all OK until here!
@@ -145,162 +145,29 @@ let availableQuestions =  [];
 
 
 
-function displayFirstQ() {
-    
-    console.log(quiz[0]);
-    quizContainer.innerText = quiz[0].question;
-    optionText1.innerText = quiz[0].choice1;
-    optionText2.innerText = quiz[0].choice2;
-    optionText3.innerText = quiz[0].choice3;
-}
-
-function getNewQuestions() {
-    const questionsIndex = availableQuestions[0]++;
-    currentQuestion = availableQuestions[questionsIndex];
-    quizContainer.innerText = currentQuestion.question;
-}
-
-/*
-
-// Kick things off
-
-function buildQuiz(){
-  // variable to store the HTML output
-  const outputQ = [];
-  const outputA = [];
-
-  // for each question...
-  quiz.forEach(
-    (currentQuestion, questionNumber) => {
-
-      // variable to store the list of possible answers
-      const answers = [];
-
-      // and for each available answer...
-      for(letter in currentQuestion.answers){
-
-        // ...add an HTML radio button
-        answers.push(
-          `<label>
-            <input type="radio" name="question${questionNumber}" value="${letter}">
-            ${letter} :
-            ${currentQuestion.answers[letter]}
-          </label>`
-        );
-      }
-
-      // add this question and its answers to the output
-      outputQ.push(
-        `<div class="question"> ${currentQuestion.question} </div>`
-      );
-      outputA.push(
-        `<div class="answers"> ${answers.join('')} </div>`
-      );
-    }
-  );
-
-  // displau Q and A in separate containers
-  quizContainer.innerHTML = outputQ;
-  optionContainer.innerHTML = outputA;
-}
-
-
-
-
-buildQuiz();
-function showResults(){
-
-  // gather answer containers from our quiz
-  const answerContainers = quizContainer.querySelectorAll('.answers');
-
-  // keep track of user's answers
-  let numCorrect = 0;
-
-  // for each question...
-  myQuestions.forEach( (currentQuestion, questionNumber) => {
-
-    // find selected answer
-    const answerContainer = answerContainers[questionNumber];
-    const selector = `input[name=question${questionNumber}]:checked`;
-    const userAnswer = (answerContainer.querySelector(selector) || {}).value;
-
-    // if answer is correct
-    if(userAnswer === currentQuestion.correctAnswer){
-      // add to the number of correct answers
-      numCorrect++;
-
-      // color the answers green
-      answerContainers[questionNumber].style.color = 'lightgreen';
-    }
-    // if answer is wrong or blank
-    else{
-      // color the answers red
-      answerContainers[questionNumber].style.color = 'red';
-    }
-  });
-
-  // show number of correct answers out of total
-  resultsContainer.innerHTML = `${numCorrect} out of ${myQuestions.length}`;
-}
-
-const quizContainer = document.getElementById("q-out");
-const resultsContainer = document.getElementById("r-out");
-const submitButton = document.getElementById('submit');
-const optionContainer = document.getElementById("o-out")
-
-
-
-
-// Event listeners
-submitButton.addEventListener('click', showResults);
-
-
-
-
-/*
-var questionCounter = 0;
-
-let quizContainer = document.getElementById("q-out");
-let resultsContainer = document.getElementById("r-out");
-let submitButton = document.getElementById('submit');
-let optionContainer = document.getElementById("o-out")
-
-
-// define elements
-var content = $("content"),
-  questionContainer = $("question"),
-  choicesContainer = $("choices"),
-  scoreContainer = $("score"),
-  submitBtn = $("submit");
-score = 0,
-  askingQuestion = true;
-function $(id) { // shortcut for document.getElementById
-  return document.getElementById(id);
-}
-function askQuestion() {
-//increment the counter
-    questionCounter++;
-var choices = quiz[currentQuestion].choices,
-    choicesHtml = "";
-
-// loop through choices, and create radio buttons
-  for (var i = 0; i < choices.length; i++) {
-    choicesHtml += "<input type='radio' name='quiz" + currentQuestion +
-      "' id='choice" + (i + 1) +
-      "' value='" + choices[i] + "'>" +
-      " <label for='choice" + (i + 1) + "'>" + choices[i] + "</label><br>";
+function displayFirstQ(randomCategory) {
+  if (randomCategory === 0) {
+      alert("Picked Pokemon");
+      console.log(quizCatA[0]);
+      quizContainer.innerText = quizCatA[0].question;
+      optionText1.innerText = quizCatA[0].choice1;
+      optionText2.innerText = quizCatA[0].choice2;
+      optionText3.innerText = quizCatA[0].choice3;
+  } else if (randomCategory === 1) {
+      alert("Picked Minecraft");
+      console.log(quizCatB[0]);
+      quizContainer.innerText = quizCatB[0].question;
+      optionText1.innerText = quizCatB[0].choice1;
+      optionText2.innerText = quizCatB[0].choice2;
+      optionText3.innerText = quizCatB[0].choice3;
+  } else if (randomCategory === 2) {
+      alert("Picked Maths");
+      console.log(quizCatC[0]);
+      quizContainer.innerText = quizCatC[0].question;
+      optionText1.innerText = quizCatC[0].choice1;
+      optionText2.innerText = quizCatC[0].choice2;
+      optionText3.innerText = quizCatC[0].choice3;
+  } else {
+      alert("Not defined yet");
   }
-// load the question
-  quizContainer.innerHTML = "Q" + (questionCounter) + ". " +
-    quiz[currentQuestion].question;
-// load the choices
-  optionContainer.innerHTML = choicesHtml;
-// setup for the first time
-  if (questionCounter === 1) {
-    scoreContainer.textContent = "Score: 0 right answers out of " +
-      quiz.length + " possible.";
-    submitBtn.textContent = "Submit Answer";
-}
-}
-
-*/
+};  
