@@ -192,11 +192,14 @@ function displayFirstQ(randomCategory) {
 
 //get the value of the checked radiobutton to compare to correct answer
 
-let myForm = document.getElementsByName("test");
+
+
+
+/*let myForm = document.getElementsByName("test");
 myForm.elements.namedItem("test").value;
 function checkRadioValue(){
   (form.elements["test"].value);
-}
+}*/
 
 
 
@@ -214,7 +217,7 @@ function checkRadioValue(){
  let submitAnswer = document.getElementById("submit-answer");
  submitAnswer.addEventListener('click', checkAnswer); // left clicks*/
 
-let currentAnswer = "";
+let currentAnswer = document.querySelector('input[name="test"]:checked').value;
 let correctAnswer = "";
 let acceptingAnswers = true;
 let score = 0;
