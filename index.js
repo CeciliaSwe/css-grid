@@ -3,6 +3,11 @@ const resultsContainer = document.getElementById("r-out");
 const optionText1 = document.getElementById("option-1");
 const optionText2 = document.getElementById("option-2");
 const optionText3 = document.getElementById("option-3");
+let correctAnswer = "";
+let acceptingAnswers = true;
+let score = 0;
+let questionCounter = 0;
+let availableQuestions =  [];
 
 function clickQuestion (event) {
     
@@ -190,21 +195,13 @@ function displayFirstQ(randomCategory) {
 //all OK until here!
 
 
-//get the value of the checked radiobutton to compare to correct answer
 
 
-
-
-/*let myForm = document.getElementsByName("test");
-myForm.elements.namedItem("test").value;
-function checkRadioValue(){
-  (form.elements["test"].value);
-}*/
-
-
-
-/*function checkAnswer(event) {
-  if (document.getElementById("radios").val() === correctAnswer){
+// compares chosen answer with correct answer and returns alert
+function checkAnswer(event) {
+  //get the value of the checked radiobutton to compare to correct answer
+  let currentAnswer = document.querySelector('input[name="test"]:checked').value;
+  if (parseInt(currentAnswer) === parseInt(correctAnswer)) {
     alert("WOOP you did it");
     userScore.correct++;
     } else{
@@ -217,9 +214,4 @@ function checkRadioValue(){
  let submitAnswer = document.getElementById("submit-answer");
  submitAnswer.addEventListener('click', checkAnswer); // left clicks*/
 
-let currentAnswer = document.querySelector('input[name="test"]:checked').value;
-let correctAnswer = "";
-let acceptingAnswers = true;
-let score = 0;
-let questionCounter = 0;
-let availableQuestions =  [];
+
