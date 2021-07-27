@@ -1,4 +1,46 @@
-let answerA = document.getElementById("btn-optionA");
+
+  
+  function checkAnswer(event) {
+    //get the value of the checked radiobutton to compare to correct answer
+    let currentAnswer = document.querySelector('input[name="test"]:checked').value;
+
+    let numCorrect = 0;
+    //display in results container
+    resultsContainer.innerText = numCorrect.valueOf;
+    if (parseInt(currentAnswer) === parseInt(correctAnswer)) {
+      alert("WOOP you did it");
+      numCorrect++;
+      } else{
+        alert("NAH")
+      }
+      //display in results container
+      resultsContainer.innerText = numCorrect.valueOf;
+      console.log(userScore);
+   }
+  
+
+    // if answer is correct
+    if(userAnswer === currentQuestion.correctAnswer){
+      // add to the number of correct answers
+      numCorrect++;
+
+      // color the answers green
+      answerContainers[questionNumber].style.color = 'lightgreen';
+    }
+    // if answer is wrong or blank
+    else{
+      // color the answers red
+      answerContainers[questionNumber].style.color = 'red';
+    }
+  });
+
+  // show number of correct answers out of total
+  resultsContainer.innerHTML = `${numCorrect} out of ${myQuestions.length}`;
+}
+
+
+
+/*let answerA = document.getElementById("btn-optionA");
 let answerB = document.getElementById("btn-optionB");
 let answerC = document.getElementById("btn-optionC");
 let pickedOption = document.getElementsByClassName("option-prefix");
@@ -30,7 +72,7 @@ function checkAnswer(event) {
 const quizContainer = document.getElementById("q-out");
     const resultsContainer = document.getElementById("r-out");
     const submitButton = document.getElementById('submit');
-    const optionContainer = document.getElementById("o-out")*/
+    const optionContainer = document.getElementById("o-out")
 
 var quiz = [{
   "question": "What is the full form of IP?",

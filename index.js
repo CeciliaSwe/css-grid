@@ -30,8 +30,8 @@ function clickQuestion (event) {
     
 }
   
-  let questionButton = document.getElementById('question');
-  questionButton.addEventListener('click', clickQuestion); // left clicks
+let questionButton = document.getElementById('question');
+questionButton.addEventListener('click', clickQuestion); // left clicks
 
 function questionValue() {
     let values = [10, 20, 50, 100];
@@ -191,14 +191,24 @@ function displayFirstQ(randomCategory) {
   }
 };  
 
-
-//all OK until here!
-
-
-
-
 // compares chosen answer with correct answer and returns alert
 function checkAnswer(event) {
+  //get the value of the checked radiobutton to compare to correct answer
+  let currentAnswer = document.querySelector('input[name="test"]:checked').value;
+  let numCorrect = 0;
+  if (parseInt(currentAnswer) === parseInt(correctAnswer)) {
+    alert("WOOP you did it");
+    numCorrect++;
+    } else{
+      alert("NAH")
+    }
+    console.log(numCorrect);
+    //display in results container
+    resultsContainer.innerText = numCorrect;
+ }
+
+
+/*function checkAnswer(event) {
   //get the value of the checked radiobutton to compare to correct answer
   let currentAnswer = document.querySelector('input[name="test"]:checked').value;
   if (parseInt(currentAnswer) === parseInt(correctAnswer)) {
@@ -209,9 +219,9 @@ function checkAnswer(event) {
       userScore.incorrect++;
     }
     console.log(userScore);
- }
+ }*/
 
  let submitAnswer = document.getElementById("submit-answer");
  submitAnswer.addEventListener('click', checkAnswer); // left clicks*/
 
-
+//all OK until here!
