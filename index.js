@@ -195,31 +195,22 @@ function displayFirstQ(randomCategory) {
 function checkAnswer(event) {
   //get the value of the checked radiobutton to compare to correct answer
   let currentAnswer = document.querySelector('input[name="test"]:checked').value;
-  let numCorrect = 0;
+  let currentScore = 0;
+  let addedScore = document.getElementById("value").innerHTML;
+
   if (parseInt(currentAnswer) === parseInt(correctAnswer)) {
     alert("WOOP you did it");
-    numCorrect++;
+    resultsContainer.innerText = parseInt(currentScore) + parseInt(addedScore);
+    
+  
     } else{
       alert("NAH")
     }
-    console.log(numCorrect);
+    
     //display in results container
-    resultsContainer.innerText = numCorrect;
+    
  }
 
-
-/*function checkAnswer(event) {
-  //get the value of the checked radiobutton to compare to correct answer
-  let currentAnswer = document.querySelector('input[name="test"]:checked').value;
-  if (parseInt(currentAnswer) === parseInt(correctAnswer)) {
-    alert("WOOP you did it");
-    userScore.correct++;
-    } else{
-      alert("NAH")
-      userScore.incorrect++;
-    }
-    console.log(userScore);
- }*/
 
  let submitAnswer = document.getElementById("submit-answer");
  submitAnswer.addEventListener('click', checkAnswer); // left clicks*/
