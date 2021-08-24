@@ -157,9 +157,10 @@ let quiz = [
 ];
 
 //Filter out questions from a specific category
-const quizCatA = quiz.filter(quiz => quiz.category === "Pokemon");
-const quizCatB = quiz.filter(quiz => quiz.category === "Minecraft");
-const quizCatC = quiz.filter(quiz => quiz.category === "Maths");
+var quizCatA = quiz.filter(quiz => quiz.category === "Pokemon");
+var quizCatB = quiz.filter(quiz => quiz.category === "Minecraft");
+var quizCatC = quiz.filter(quiz => quiz.category === "Maths");
+var pos = 0;
 
 function displayFirstQ(randomCategory) {
   if (randomCategory === 0) {
@@ -207,10 +208,23 @@ function checkAnswer(event) {
       alert("NAH")
     }
     
+
     //display in results container
-    
+  // changes position of which character user is on
+  pos++;
+  loadNext();  
  }
 
+ function loadNext() {
+
+  quizContainer.innerText = quizCatA[pos].question;
+  optionText1.innerText = quizCatA[pos].choice1;
+  optionText2.innerText = quizCatA[pos].choice2;
+  optionText3.innerText = quizCatA[pos].choice3;
+  correctAnswer = (quizCatA[pos].answer);
+
+  console.log(quizCatA[pos]);
+ }
 
  let submitAnswer = document.getElementById("submit-answer");
  submitAnswer.addEventListener('click', checkAnswer); // left clicks*/
