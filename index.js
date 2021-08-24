@@ -101,12 +101,15 @@ function renderQuestion(){
   }
   get("test_status").innerHTML = "Question "+(pos+1);
   
+  //define the index of the question using the position variable
   question = questions[pos].question;
   chA = questions[pos].a;
   chB = questions[pos].b;
   chC = questions[pos].c;
-  // display the question
-  test.innerHTML = "<h3>"+question+"</h3>";
+
+  // display the question in the test div
+  test.innerHTML = question;
+
   // display the answer options
   // the += appends to the data we started on the line above
   test.innerHTML += "<label> <input type='radio' name='choices' value='A'> "+chA+"</label><br>";
