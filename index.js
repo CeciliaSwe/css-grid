@@ -217,6 +217,9 @@ function checkAnswer(event) {
 
     clear();
     incrementStrike();
+    show();
+    hide();
+    toggle();
 
  }
 
@@ -261,7 +264,39 @@ function checkAnswer(event) {
    // Clears the radiobuttons
    Array.from( document.querySelectorAll('input[name="test"]:checked'), input => input.checked = false );
 
+   //Clear question
+   quizContainer.innerText = "QUESTION";
+   optionText1.innerText = "";
+   optionText2.innerText = "";
+   optionText3.innerText = "";
+   document.getElementById("question").innerText = "Next";
+   
+   
+
+
  }
+
+ function show()
+ {
+   document.getElementById("question").style.backgroundColor = "orange";
+ }
+ // blink "off" state
+ function hide()
+ {
+   document.getElementById("question").style.backgroundColor = "grey";
+ }
+
+ function toggle() {
+  for(var i=900; i < 4500; i=i+900)
+  {
+    setTimeout("hide()",i);
+    setTimeout("show()",i+450);
+  }
+ }
+ 
+ // toggle "on" and "off" states every 450 ms to achieve a blink effect
+ // end after 4500 ms (less than five seconds)
+ 
 
  function displayQ(randomCategory) {
   if (randomCategory === 0) {
