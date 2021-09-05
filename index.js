@@ -202,6 +202,7 @@ function checkAnswer(event) {
   let currentAnswer = document.querySelector('input[name="test"]:checked').value;
   let currentScore = parseInt(resultsContainer.innerHTML);
   let addedScore = parseInt(document.getElementById("value").innerHTML);
+  let incorrect = parseInt(document.getElementById("incorrect").innerHTML);
 
   if (parseInt(currentAnswer) === parseInt(correctAnswer)) {
     alert("WOOP you did it");
@@ -210,17 +211,36 @@ function checkAnswer(event) {
   
     } else{
       alert("NAH")
+      document.getElementById("incorrect").innerHTML++;
+      
     }
 
     clear();
+    incrementStrike();
 
-    //display in results container
-  // changes position of which character user is on and based on category
-  
- 
-  
-  /*loadNext();*/
  }
+
+ function incrementStrike() {
+ let incorrect = parseInt(document.getElementById("incorrect").innerHTML);
+  if (incorrect === 1) {
+    alert("1 wrong")
+    document.getElementById("strike-1").style.backgroundColor = "red";
+    
+} else if (incorrect === 2) {
+  alert("2 wrong");
+  document.getElementById("strike-2").style.backgroundColor = "red";
+   
+} else if (incorrect === 3) {
+  alert("3 wrong");
+  document.getElementById("strike-3").style.backgroundColor = "red";
+    
+} else {
+  alert("No incorrect!")
+  
+}
+};  
+
+ 
 
  /*function loadNext() {
 
