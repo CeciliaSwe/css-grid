@@ -198,7 +198,7 @@ function displayFirstQ(randomCategory) {
 
 // compares chosen answer with correct answer and returns alert
 function checkAnswer(event) {
-  //get the value of the checked radiobutton to compare to correct answer
+  //get the value of the checked radiobutton to compare to correct answer and increment results
   let currentAnswer = document.querySelector('input[name="test"]:checked').value;
   let currentScore = parseInt(resultsContainer.innerHTML);
   let addedScore = parseInt(document.getElementById("value").innerHTML);
@@ -211,11 +211,8 @@ function checkAnswer(event) {
     } else{
       alert("NAH")
     }
-   
-    document.getElementById("c-1").style.backgroundColor = "grey";
-    document.getElementById("c-2").style.backgroundColor = "grey";
-    document.getElementById("c-3").style.backgroundColor = "grey";
-    document.getElementById("c-4").style.backgroundColor = "grey";
+
+    clear();
 
     //display in results container
   // changes position of which character user is on and based on category
@@ -235,6 +232,18 @@ function checkAnswer(event) {
 
   console.log(quizCatA[pos]);
  }*/
+ function clear() {
+   // Clears lit category
+
+   document.getElementById("c-1").style.backgroundColor = "grey";
+   document.getElementById("c-2").style.backgroundColor = "grey";
+   document.getElementById("c-3").style.backgroundColor = "grey";
+   document.getElementById("c-4").style.backgroundColor = "grey";
+
+   // Clears the radiobuttons
+   Array.from( document.querySelectorAll('input[name="test"]:checked'), input => input.checked = false );
+
+ }
 
  function displayQ(randomCategory) {
   if (randomCategory === 0) {
