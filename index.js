@@ -26,7 +26,7 @@ function clickQuestion (event) {
     shuffle(quizCatA);
     shuffle(quizCatB);
     shuffle(quizCatC);
-    displayFirstQ(randomCategory);
+    displayQ(randomCategory);
     
 }
   
@@ -160,7 +160,9 @@ let quiz = [
 var quizCatA = quiz.filter(quiz => quiz.category === "Pokemon");
 var quizCatB = quiz.filter(quiz => quiz.category === "Minecraft");
 var quizCatC = quiz.filter(quiz => quiz.category === "Maths");
-var pos = 0;
+var posA = 0;
+var posB = 0;
+var posC = 0;
 
 function displayFirstQ(randomCategory) {
   if (randomCategory === 0) {
@@ -210,12 +212,27 @@ function checkAnswer(event) {
     
 
     //display in results container
-  // changes position of which character user is on
-  pos++;
-  loadNext();  
+  // changes position of which character user is on and based on category
+  if (randomCategory === 0) {
+    /*alert("Picked 1")*/
+    posA++;
+    } else if (randomCategory === 1) {
+    /*alert("Picked 2");*/
+    posB++;
+    } else if (randomCategory === 2) {
+    /*alert("Picked 3");*/
+    posC++;
+    } else if (randomCategory === 3) {
+    alert("Picked 4 - not defined");
+    
+  };
+
+  displayQ(randomCategory);
+  
+  /*loadNext();*/
  }
 
- function loadNext() {
+ /*function loadNext() {
 
   quizContainer.innerText = quizCatA[pos].question;
   optionText1.innerText = quizCatA[pos].choice1;
@@ -224,7 +241,37 @@ function checkAnswer(event) {
   correctAnswer = (quizCatA[pos].answer);
 
   console.log(quizCatA[pos]);
- }
+ }*/
+
+ function displayQ(randomCategory) {
+  if (randomCategory === 0) {
+      /*alert("Picked Pokemon");*/
+      console.log(quizCatA[posA]);
+      quizContainer.innerText = quizCatA[posA].question;
+      optionText1.innerText = quizCatA[posA].choice1;
+      optionText2.innerText = quizCatA[posA].choice2;
+      optionText3.innerText = quizCatA[posA].choice3;
+      correctAnswer = (quizCatA[posA].answer);
+  } else if (randomCategory === 1) {
+      /*alert("Picked Minecraft");*/
+      console.log(quizCatB[posB]);
+      quizContainer.innerText = quizCatB[posB].question;
+      optionText1.innerText = quizCatB[posB].choice1;
+      optionText2.innerText = quizCatB[posB].choice2;
+      optionText3.innerText = quizCatB[posB].choice3;
+      correctAnswer = (quizCatB[posB].answer);
+  } else if (randomCategory === 2) {
+      /*alert("Picked Maths");*/
+      console.log(quizCatC[posC]);
+      quizContainer.innerText = quizCatC[posC].question;
+      optionText1.innerText = quizCatC[posC].choice1;
+      optionText2.innerText = quizCatC[posC].choice2;
+      optionText3.innerText = quizCatC[posC].choice3;
+      correctAnswer = (quizCatC[posC].answer);
+  } else {
+      /*alert("Not defined yet");*/
+  }
+};  
 
  let submitAnswer = document.getElementById("submit-answer");
  submitAnswer.addEventListener('click', checkAnswer); // left clicks*/
