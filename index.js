@@ -200,12 +200,12 @@ function displayFirstQ(randomCategory) {
 function checkAnswer(event) {
   //get the value of the checked radiobutton to compare to correct answer
   let currentAnswer = document.querySelector('input[name="test"]:checked').value;
-  let currentScore = 0;
+  let currentScore = parseInt(resultsContainer.innerHTML);
   let addedScore = document.getElementById("value").innerHTML;
 
   if (parseInt(currentAnswer) === parseInt(correctAnswer)) {
     alert("WOOP you did it");
-    resultsContainer.innerText = parseInt(currentScore) + parseInt(addedScore);
+    resultsContainer.innerText = currentScore + parseInt(addedScore);
     
   
     } else{
