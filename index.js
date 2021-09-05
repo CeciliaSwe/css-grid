@@ -10,17 +10,17 @@ let questionCounter = 0;
 let availableQuestions =  [];
 
 function clickQuestion (event) {
-    
-    let selectDiv = document.getElementsByClassName('category');
-    let classLength = selectDiv.length;
+  let selectDiv = document.getElementsByClassName('category');
+  let classLength = selectDiv.length;
     /*alert("There are "+classLength+" category classes in the html code");*/
-    let randomCategory = Math.floor(Math.random() * selectDiv.length);
-    console.log(randomCategory, selectDiv[randomCategory]);
-    console.log(randomCategory);
+  let randomCategory = Math.floor(Math.random() * selectDiv.length);
+  console.log(randomCategory, selectDiv[randomCategory]);
+  console.log(randomCategory);
+    
     /*console.log('Received the ' + event.type + " event!");
     console.log('"this" currently refers to', this.id);
     console.log('You clicked the button!\n');*/
-
+    
     questionValue();
     lightCategory(randomCategory);   
     shuffle(quizCatA);
@@ -32,6 +32,8 @@ function clickQuestion (event) {
   
 let questionButton = document.getElementById('question');
 questionButton.addEventListener('click', clickQuestion); // left clicks
+
+
 
 function questionValue() {
     let values = [10, 20, 50, 100];
@@ -209,25 +211,16 @@ function checkAnswer(event) {
     } else{
       alert("NAH")
     }
-    
+   
+    document.getElementById("c-1").style.backgroundColor = "grey";
+    document.getElementById("c-2").style.backgroundColor = "grey";
+    document.getElementById("c-3").style.backgroundColor = "grey";
+    document.getElementById("c-4").style.backgroundColor = "grey";
 
     //display in results container
   // changes position of which character user is on and based on category
-  if (randomCategory === 0) {
-    /*alert("Picked 1")*/
-    posA++;
-    } else if (randomCategory === 1) {
-    /*alert("Picked 2");*/
-    posB++;
-    } else if (randomCategory === 2) {
-    /*alert("Picked 3");*/
-    posC++;
-    } else if (randomCategory === 3) {
-    alert("Picked 4 - not defined");
-    
-  };
-
-  displayQ(randomCategory);
+  
+ 
   
   /*loadNext();*/
  }
@@ -252,6 +245,7 @@ function checkAnswer(event) {
       optionText2.innerText = quizCatA[posA].choice2;
       optionText3.innerText = quizCatA[posA].choice3;
       correctAnswer = (quizCatA[posA].answer);
+      posA++;
   } else if (randomCategory === 1) {
       /*alert("Picked Minecraft");*/
       console.log(quizCatB[posB]);
@@ -260,6 +254,7 @@ function checkAnswer(event) {
       optionText2.innerText = quizCatB[posB].choice2;
       optionText3.innerText = quizCatB[posB].choice3;
       correctAnswer = (quizCatB[posB].answer);
+      posB++;
   } else if (randomCategory === 2) {
       /*alert("Picked Maths");*/
       console.log(quizCatC[posC]);
@@ -268,6 +263,7 @@ function checkAnswer(event) {
       optionText2.innerText = quizCatC[posC].choice2;
       optionText3.innerText = quizCatC[posC].choice3;
       correctAnswer = (quizCatC[posC].answer);
+      posC++;
   } else {
       /*alert("Not defined yet");*/
   }
