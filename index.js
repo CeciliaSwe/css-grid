@@ -223,19 +223,17 @@ function checkAnswer(event) {
  function incrementStrike() {
  let incorrect = parseInt(document.getElementById("incorrect").innerHTML);
   if (incorrect === 1) {
-    alert("1 wrong")
     document.getElementById("strike-1").style.backgroundColor = "red";
     
 } else if (incorrect === 2) {
-  alert("2 wrong");
   document.getElementById("strike-2").style.backgroundColor = "red";
    
 } else if (incorrect === 3) {
-  alert("3 wrong");
+  alert("One more strike and you´re our buddy...")
   document.getElementById("strike-3").style.backgroundColor = "red";
     
 } else {
-  alert("No incorrect!")
+  alert("GAME OVER")
   
 }
 };  
