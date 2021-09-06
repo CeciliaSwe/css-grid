@@ -9,8 +9,10 @@ let correctAnswer = "";
 function clickQuestion (event) {
   let selectDiv = document.getElementsByClassName('category');
   let classLength = selectDiv.length;
-    /*alert("There are "+classLength+" category classes in the html code");*/
+    
+  /*alert("There are "+classLength+" category classes in the html code");*/
   let randomCategory = Math.floor(Math.random() * selectDiv.length);
+  
   /*console.log(randomCategory, selectDiv[randomCategory]);
   console.log(randomCategory);
   console.log('Received the ' + event.type + " event!");
@@ -164,7 +166,7 @@ var posC = 0;
 
 
 
-// compares chosen answer with correct answer and returns alert
+// compares chosen answer with correct answer and increments score or strikes
 function checkAnswer(event) {
   //get the value of the checked radiobutton to compare to correct answer and increment results
   let currentAnswer = document.querySelector('input[name="test"]:checked').value;
@@ -172,15 +174,13 @@ function checkAnswer(event) {
   let addedScore = parseInt(document.getElementById("value").innerHTML);
   let incorrect = parseInt(document.getElementById("incorrect").innerHTML);
 
+  //
   if (parseInt(currentAnswer) === parseInt(correctAnswer)) {
     alert("WOOP you did it");
     resultsContainer.innerText = currentScore + addedScore;
-    
-  
     } else{
       alert("NAH")
-      document.getElementById("incorrect").innerHTML++;
-      
+      document.getElementById("incorrect").innerHTML++; 
     }
 
     clear();
@@ -188,9 +188,9 @@ function checkAnswer(event) {
     show();
     hide();
     toggle();
-
  }
 
+ //Visually Indicates how many incorrect answers
  function incrementStrike() {
  let incorrect = parseInt(document.getElementById("incorrect").innerHTML);
 
@@ -205,26 +205,14 @@ function checkAnswer(event) {
   document.getElementById("strike-3").style.backgroundColor = "red";
     
 } else if (incorrect === 4) {
-  alert("GAME OVER")
+  alert("GAME OVER");
     
 } else {
-  
-  
+   
 }
 };  
 
- 
-
- /*function loadNext() {
-
-  quizContainer.innerText = quizCatA[pos].question;
-  optionText1.innerText = quizCatA[pos].choice1;
-  optionText2.innerText = quizCatA[pos].choice2;
-  optionText3.innerText = quizCatA[pos].choice3;
-  correctAnswer = (quizCatA[pos].answer);
-
-  console.log(quizCatA[pos]);
- }*/
+ //Clears to prep for next question
  function clear() {
    // Clears lit category
 
@@ -243,12 +231,8 @@ function checkAnswer(event) {
    optionText3.innerText = "";
    document.getElementById("question").innerText = "Next";
    document.getElementById("value").innerText = "Value"
-   
-   
-
-
  }
-
+// blink "on" state
  function show()
  {
    document.getElementById("question").style.backgroundColor = "orange";
@@ -258,7 +242,7 @@ function checkAnswer(event) {
  {
    document.getElementById("question").style.backgroundColor = "grey";
  }
-
+ //Execute blink function
  function toggle() {
   for(var i=900; i < 4500; i=i+900)
   {

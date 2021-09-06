@@ -9,7 +9,7 @@ body {
 #gridwrap {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    grid-auto-rows: minmax(100px, auto);
+    grid-auto-rows: minmax(80px, auto);
     grid-gap: 15px;
     max-width: 1680px;
     margin: 0 auto;
