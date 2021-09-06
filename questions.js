@@ -114,3 +114,32 @@
   
     // Event listeners
     submitButton.addEventListener('click', showResults);
+    function displayFirstQ(randomCategory) {
+      if (randomCategory === 0) {
+          /*alert("Picked Pokemon");*/
+          console.log(quizCatA[0]);
+          quizContainer.innerText = quizCatA[0].question;
+          optionText1.innerText = quizCatA[0].choice1;
+          optionText2.innerText = quizCatA[0].choice2;
+          optionText3.innerText = quizCatA[0].choice3;
+          correctAnswer = (quizCatA[0].answer);
+      } else if (randomCategory === 1) {
+          /*alert("Picked Minecraft");*/
+          console.log(quizCatB[0]);
+          quizContainer.innerText = quizCatB[0].question;
+          optionText1.innerText = quizCatB[0].choice1;
+          optionText2.innerText = quizCatB[0].choice2;
+          optionText3.innerText = quizCatB[0].choice3;
+          correctAnswer = (quizCatB[0].answer);
+      } else if (randomCategory === 2) {
+          /*alert("Picked Maths");*/
+          console.log(quizCatC[0]);
+          quizContainer.innerText = quizCatC[0].question;
+          optionText1.innerText = quizCatC[0].choice1;
+          optionText2.innerText = quizCatC[0].choice2;
+          optionText3.innerText = quizCatC[0].choice3;
+          correctAnswer = (quizCatC[0].answer);
+      } else {
+          /*alert("Not defined yet");*/
+      }
+    };  
