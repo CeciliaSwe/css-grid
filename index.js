@@ -5,6 +5,13 @@ let optionText2 = document.getElementById("option-2");
 let optionText3 = document.getElementById("option-3");
 let correctAnswer = "";
 
+//Wait for DOM to load, the shuffle quiz
+document.addEventListener("DOMContentLoaded", function() {
+  shuffle(quizCatA);
+  shuffle(quizCatB);
+  shuffle(quizCatC);
+});
+
 // Uses event listner to initialize the quiz with assigning a random value, category and question
 function clickQuestion (event) {
   let selectDiv = document.getElementsByClassName('category');
@@ -21,17 +28,11 @@ function clickQuestion (event) {
     
     questionValue();
     lightCategory(randomCategory);   
-    shuffle(quizCatA);
-    shuffle(quizCatB);
-    shuffle(quizCatC);
     displayQ(randomCategory);
-    
 }
   
 let questionButton = document.getElementById('question');
 questionButton.addEventListener('click', clickQuestion); // left clicks
-
-
 
 function questionValue() {
     let values = [10, 20, 50, 100];
@@ -79,82 +80,9 @@ function shuffle(quiz) {
   return quiz;
 }
 
-// Questions
 
-let quiz = [
-  {
-      question: "How many starter Pokemons can you choose from?",
-      choice1: "1",
-      choice2: "3",
-      choice3: "5",
-      answer: 2,
-      category: "Pokemon",
-  },
-  {
-    question: "What color is Charmander?",
-    choice1: "Green",
-    choice2: "Blue",
-    choice3: "Orange",
-    answer: 3,
-    category: "Pokemon",
-  },
-  {
-    question: "Which is not a legendary Pokemon?",
-    choice1: "Heatran",
-    choice2: "Dragonite",
-    choice3: "Lugia",
-    answer: 2,
-    category: "Pokemon",
-  },
-  {
-    question: "Which is a Minecraft character?",
-    choice1: "Creeper",
-    choice2: "Crawler",
-    choice3: "Crowbar",
-    answer: 1,
-    category: "Minecraft",
-  },
-  {
-    question: "Who created Minecraft?",
-    choice1: "Anders Jansson",
-    choice2: "Johan Larsson",
-    choice3: "Markus Persson",
-    answer: 3,
-    category: "Minecraft",
-  },
-  {
-    question: "What shape are building blocks?",
-    choice1: "square",
-    choice2: "circular",
-    choice3: "hexagon",
-    answer: 1,
-    category: "Minecraft",
-  },
-  {
-      question: "What is 3x3",
-      choice1: "9",
-      choice2: "18",
-      choice3: "35",
-      answer: 1,
-      category: "Maths",
-  },
-  {
-    question: "What is 24 - 8",
-    choice1: "16",
-    choice2: "13",
-    choice3: "19",
-    answer: 1,
-    category: "Maths",
-  },
-  {
-      question: "What is 4-4",
-      choice1: "2",
-      choice2: "16",
-      choice3: "0",
-      answer: 3,
-      category: "Maths",
-  }
-];
+
+
 
 //Filter out questions from a specific category
 var quizCatA = quiz.filter(quiz => quiz.category === "Pokemon");
@@ -196,16 +124,19 @@ function checkAnswer(event) {
 
   if (incorrect === 1) {
     document.getElementById("strike-1").style.backgroundColor = "red";
+    document.getElementById("strike-1").innerHTML = "X";
     
 } else if (incorrect === 2) {
   document.getElementById("strike-2").style.backgroundColor = "red";
+  document.getElementById("strike-2").innerHTML = "X";
    
 } else if (incorrect === 3) {
   alert("One more strike and you´re our buddy...")
   document.getElementById("strike-3").style.backgroundColor = "red";
+  document.getElementById("strike-3").innerHTML = "X";
     
 } else if (incorrect === 4) {
-  alert("GAME OVER");
+  alert(`GAME OVER! Your total score is ${parseInt(resultsContainer.innerHTML)}.`);
     
 } else {
    
@@ -219,7 +150,7 @@ function checkAnswer(event) {
    document.getElementById("c-1").style.backgroundColor = "grey";
    document.getElementById("c-2").style.backgroundColor = "grey";
    document.getElementById("c-3").style.backgroundColor = "grey";
-   document.getElementById("c-4").style.backgroundColor = "grey";
+   
 
    // Clears the radiobuttons
    Array.from( document.querySelectorAll('input[name="test"]:checked'), input => input.checked = false );

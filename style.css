@@ -123,7 +123,7 @@ footer {
     grid-area: footer;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
 }
 
@@ -168,4 +168,10 @@ button {
     border-radius: 6px;
     height: auto;
     
+}
+
+.strike {
+    background-color: green;
+    padding: 20px;
+    margin: 0;
 }
